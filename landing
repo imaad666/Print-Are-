@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print[Are]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        section {
+            padding: 2em;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Print[Are]</h1>
+    </header>
+
+    <section>
+        <h2>Welcome to Print[Are]</h2>
+        <p>Revolutionizing on-demand printing with a seamless and efficient solution. Scan the QR code, upload your documents, and experience instant printing at your fingertips.</p>
+        <p><strong>Get started now!</strong></p>
+        <button onclick="location.href='#document-upload'">Upload Documents</button>
+    </section>
+
+    <section id="document-upload">
+        <h2>Upload Documents</h2>
+        <p>Use the portal below to upload your documents for printing:</p>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".pdf, .doc, .docx">
+            <button type="submit">Upload</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 i[Are]. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
