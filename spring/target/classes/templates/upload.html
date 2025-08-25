@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload – Print[Are]</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 2rem; background: #f7f7f7; }
+        .container { max-width: 520px; margin: 0 auto; }
+        .error { background: #ffe6e6; color: #8b0a0a; padding: .5rem; border-radius: 6px; }
+        form { background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        label { display: block; margin: .5rem 0; }
+        button { margin-top: 1rem; }
+        .note { font-size: .9rem; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Document</h1>
+        <div th:if="${error}" class="error" th:text="${error}"></div>
+
+        <div th:if="${sessionId}">
+            <form id="uploadForm" th:action="@{/upload}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="token" th:value="${param.token}"/>
+                <input type="hidden" name="sessionId" th:value="${sessionId}"/>
+
+                <label>Document (PDF/JPG/PNG)
+                    <input type="file" name="document" accept="application/pdf,image/png,image/jpeg" required />
+                </label>
+
+                <button type="submit">Upload</button>
+                <p class="note">Keep this page open; we may ask “Are you still printing?” if idle.</p>
+            </form>
+
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('uploadForm');
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const data = new FormData(form);
+                const res = await fetch(form.action, { method: 'POST', body: data });
+                const json = await res.json();
+                document.getElementById('result').textContent = JSON.stringify(json, null, 2);
+            });
+            // keepalive ping every 25s
+            const sessionId = new URLSearchParams(window.location.search).get('sessionId') || document.querySelector('input[name="sessionId"]').value;
+            setInterval(() => {
+                fetch('/session/keepalive?sessionId=' + sessionId, { method: 'POST' });
+            }, 25000);
+        }
+    </script>
+</body>
+</html>
+
+

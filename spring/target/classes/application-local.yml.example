@@ -1,0 +1,15 @@
+# Copy to application-local.yml (gitignored) and fill in overrides
+spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 60MB
+
+printare:
+  base-url: http://192.168.1.50:8080
+  kiosk-id: kiosk-lab-01
+  upload-dir: uploads
+  allowed-mime-types: [application/pdf, image/png, image/jpeg]
+  max-file-size-bytes: 52428800
+
+

@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: printare-kiosk
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 30MB
+
+server:
+  port: 8080
+
+printare:
+  base-url: http://localhost:8080
+  kiosk-id: kiosk-001
+  upload-dir: uploads
+  allowed-mime-types: [application/pdf, image/png, image/jpeg]
+  max-file-size-bytes: 26214400
+  session:
+    token-ttl-seconds: 300
+
+
+
