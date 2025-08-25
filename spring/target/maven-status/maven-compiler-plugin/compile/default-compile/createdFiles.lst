@@ -1,0 +1,12 @@
+com\printare\Application.class
+com\printare\service\TokenService$TokenInfo.class
+com\printare\service\StorageService$SavedFile.class
+com\printare\controller\AppController.class
+com\printare\service\StorageService.class
+com\printare\service\TokenService.class
+com\printare\service\SessionService$Session.class
+com\printare\domain\PrintJob$Status.class
+com\printare\domain\SessionState.class
+com\printare\service\QrService.class
+com\printare\domain\PrintJob.class
+com\printare\service\SessionService.class

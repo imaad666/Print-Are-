@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print[Are] Kiosk</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 2rem; background: #f7f7f7; }
+        .container { max-width: 520px; margin: 0 auto; text-align: center; }
+        .qr { margin: 1rem auto; }
+        .badge { display: inline-block; padding: .25rem .5rem; border-radius: 6px; font-size: .85rem; }
+        .ok { background: #e6ffed; color: #0a7c2f; }
+        .busy { background: #ffe6e6; color: #8b0a0a; }
+    </style>
+    <meta http-equiv="refresh" content="15">
+</head>
+<body>
+    <div class="container">
+        <h1>Print[Are] – Kiosk <span th:text="${kioskId}"></span></h1>
+
+        <div th:if="${locked}">
+            <div class="badge busy">Busy / Locked</div>
+            <p>Currently serving a user. Please wait for the next session.</p>
+        </div>
+        <div th:if="${!locked}">
+            <div class="badge ok">Ready</div>
+            <p>Scan this QR to start your print session.</p>
+            <div class="qr">
+                <img th:src="${qrDataUrl}" alt="QR to upload"/>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
