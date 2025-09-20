@@ -13,5 +13,4 @@ The kiosk handles one user at a time, ensuring privacy and efficient service. Ea
 
 Perfect for libraries, colleges, offices, or anywhere people need quick, self-service printing without staff assistance.
 
-new update otw
 
